@@ -5,5 +5,6 @@ public class Airplane {
 	private int fuel;
 	private boolean alight;
 	// alabala
-	// ..
+	// ...
+	
 }
