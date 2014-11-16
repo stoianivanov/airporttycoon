@@ -1,10 +1,8 @@
 
 public class Airplane {
 
-	private int nuberOfAirplane;
-	private int fuel;
+	private int numberOfAirplanes;
+	private int fuelInMinutes;
 	private boolean alight;
-	// alabala
-	// ...
 	
 }
