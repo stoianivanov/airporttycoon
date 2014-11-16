@@ -1,12 +1,10 @@
 package airport;
 
+import javax.management.Query;
+
 public class Airport {
 
-	public static void main(String[] args) {
-		//some comment added
-	}
+	private int RUNWAYS_CAPACITY;
+	private int AIRPLANES_CAPACITY;
 	
-	public void newMethod(int a){
-		//bla bla
-	}
 }
