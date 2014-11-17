@@ -1,0 +1,25 @@
+Airplane 55 lands on runway 0
+Airplane 66 lands on runway 1
+Airplane 24 lands on runway 2
+Runway 3 is closed for 11 minutes.
+Airplane 13 takes off from runway 4.
+Airplane 33 lands on runway 0
+Airplane 16 takes off from runway 1.
+Airplane 20 lands on runway 2
+Airplane 64 lands on runway 3
+Airplane 19 takes off from runway 4.
+Airplane 33 lands on runway 0
+Airplane 16 takes off from runway 1.
+Airplane 20 lands on runway 2
+Airplane 39 lands on runway 3
+Airplane 20 lands on runway 4
+Runway 0 is closed for 7 minutes.
+Airplane 44 lands on runway 0
+Airplane 20 lands on runway 1
+Airplane 41 lands on runway 2
+Airplane 92 takes off from runway 3.
+Airplane 20 lands on runway 4
+Airplane 89 lands on runway 0
+Airplane 91 takes off from runway 1.
+Airplane 20 lands on runway 2
+Airplane 76 is redirected.

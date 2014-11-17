@@ -11,6 +11,7 @@ public class Airport {
 	private static int AIRPLANES_CAPACITY;
 	private FileConverter data;
 	private int currentAirportCapacity = 0;
+	private String output;
 	
 	private Map<Integer, Integer> runways;
 	
@@ -22,7 +23,6 @@ public class Airport {
 		this.data = data;
 		runways = new TreeMap<Integer, Integer>(); 
 		
-		
 	}
 	
 	public void runAirport(){
@@ -33,44 +33,41 @@ public class Airport {
 
 		for (String s : data.getMessage()) {
 
-			
-			
 			if(s.contains("landing")){
-				int airplaneNumber = airplaneId(s);
-				int airplaneFuel = airplaneFuel(s);
+				int airplaneNumber = readAirplaneId(s);
+				int airplaneFuel = readAirplaneFuel(s);
 				
 				if(airplaneFuel < runways.get(key) || currentAirportCapacity == AIRPLANES_CAPACITY){
-					System.out.printf("Airplane %d is redirected.\n", airplaneNumber);
-					oneMoreMinute();
+					output = String.format("Airplane %d is redirected.", airplaneNumber);
+					elapsedOneMinute();
 				}else{
-					System.out.printf("Airplane %d lands on runway %d\n", airplaneNumber, key);
+					output = String.format("Airplane %d lands on runway %d", airplaneNumber, key);
 					minValueElapsedMinutes(runways.get(key));
 					runways.put(key, MOVEMENT_TIME);
 					
-					oneMoreMinute();
+					elapsedOneMinute();
 					++currentAirportCapacity;
 				}
 				
 			}else if(s.contains("taking")){
-				int airplaneNumber = airplaneId(s);
-				System.out.printf("Airplane %d takes off from runway %d.\n", airplaneNumber, key);
+				int airplaneNumber = readAirplaneId(s);
+				output = String.format("Airplane %d takes off from runway %d.", airplaneNumber, key);
 				runways.put(key, MOVEMENT_TIME);
 				--currentAirportCapacity;
-				System.out.println(runways.toString());
-				oneMoreMinute();
+				elapsedOneMinute();
 				
 			}else{
 				
-				int closedRunwayNumber = closedRunwayId(s);
-				runways.put(closedRunwayNumber, closedRunwayForTime(s));
-				System.out.printf("Runway %d is closed for %d minutes.\n", key, runways.get(closedRunwayNumber));
-				System.out.println(runways.toString());
-				oneMoreMinute();
+				int closedRunwayNumber = readClosedRunwayId(s);
+				runways.put(closedRunwayNumber, readTimeOfClosedRunway(s));
+				output = String.format("Runway %d is closed for %d minutes.", key, runways.get(closedRunwayNumber));
+				elapsedOneMinute();
 			}
-			System.out.println(currentAirportCapacity);
 			
+			data.fileOutput(output);
 			key = keyOfMinValue();
 		}
+		System.out.println("Done.");
 	}
 	
 	private void initRunways(){
@@ -95,7 +92,7 @@ public class Airport {
 		return currentKey;
 	}
 	
-	private int airplaneId(String s){
+	private int readAirplaneId(String s){
 		
 		for(int i = 0; i < s.length(); i++){
 			
@@ -107,7 +104,7 @@ public class Airport {
 		return 0;
 	}
 	
-	private int airplaneFuel(String s){
+	private int readAirplaneFuel(String s){
 		
 		for(int i = s.length() - 1; i >=0; --i){
 			
@@ -120,8 +117,7 @@ public class Airport {
 		return 0;
 	}
 	
-	private int closedRunwayId(String s){
-		System.out.println(s);
+	private int readClosedRunwayId(String s){
 		for(int i = 7; i < s.length(); i++){
 			
 			if(s.charAt(i) == ' '){
@@ -132,7 +128,7 @@ public class Airport {
 		return 0;
 	}
 	
-	private int closedRunwayForTime(String s){
+	private int readTimeOfClosedRunway(String s){
 		
 		for(int i = s.length() - 1; i >=0; --i){
 			
@@ -145,7 +141,7 @@ public class Airport {
 		return 0;
 	}
 	
-	private void oneMoreMinute(){
+	private void elapsedOneMinute(){
 		
 		for(int i = 0; i < runways.size(); ++i){
 
