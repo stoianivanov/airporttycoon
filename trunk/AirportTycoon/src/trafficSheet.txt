@@ -1,0 +1,26 @@
+5 10 10
+55 requests landing in 20
+66 requests landing in 15
+24 requests landing in 7
+runway 3 closed for 11
+13 requests taking off
+33 requests landing in 6
+16 requests taking off
+20 requests landing in 3
+64 requests landing in 4
+19 requests taking off
+33 requests landing in 5
+16 requests taking off
+20 requests landing in 8
+39 requests landing in 5
+20 requests landing in 3
+runway 2 closed for 7
+44 requests landing in 7
+20 requests landing in 3
+41 requests landing in 25
+92 requests taking off
+20 requests landing in 30
+89 requests landing in 25
+91 requests taking off
+20 requests landing in 30
+76 requests landing in 25
