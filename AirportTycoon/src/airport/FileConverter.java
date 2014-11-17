@@ -4,20 +4,23 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
 	public class FileConverter {
 
-		private static final String FILE_NAME = "src/trafficSheet.txt";
+		private static final String FILE_NAME_INPUT = "src/trafficSheet.txt";
+		private static final String FILE_NAME_OUTPUT = "src/output.txt";
 		private Queue<String> messages ;
 		private AirportInfo airportInfo;
+		private PrintWriter writer;
 		
 		public FileConverter() {
 				
 				try {
-					InputStream file= new FileInputStream(FILE_NAME);
+					InputStream file= new FileInputStream(FILE_NAME_INPUT);
 					Scanner sc = new Scanner(file);
 					
 					Integer runwayCapacity = sc.nextInt();
@@ -32,6 +35,8 @@ import java.util.Scanner;
 						String str = sc.nextLine();
 						initQueue(str);
 					}
+					writer = new PrintWriter(FILE_NAME_OUTPUT);
+					
 					file.close();
 					sc.close();
 				} catch (FileNotFoundException e) {
@@ -42,6 +47,13 @@ import java.util.Scanner;
 				
 		}
 		
+		public void fileOutput(String s){
+			
+				writer.println(s);
+				writer.flush();
+				
+			
+		}
 		private void initQueue(String message){
 			
 			messages.add(message);
@@ -82,4 +94,3 @@ import java.util.Scanner;
 			}
 		}
 	}
-
